@@ -1,5 +1,6 @@
 package com.recallrecall.ui.contactorscreen
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -8,7 +9,9 @@ fun ContactorScreenScreen(
   state: ContactorScreenState = ContactorScreenState(),
   actions: ContactorScreenActions = ContactorScreenActions(),
 ) {
-  // TODO UI Logic
+  Text(
+    text = "Hello world!",
+  )
 }
 
 @Composable
