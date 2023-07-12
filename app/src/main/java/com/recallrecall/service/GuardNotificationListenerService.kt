@@ -5,12 +5,21 @@ import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.text.SpannableString
 import android.util.Log
+import com.recallrecall.db.Message
+import com.recallrecall.repository.MessageRepository
+import com.recallrecall.repository.RoomMessageRepository
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class GuardNotificationListenerService : NotificationListenerService() {
 
   private val wechatPkg = "com.tencent.mm"
+
+  @Inject
+  lateinit var repository: RoomMessageRepository
 
   companion object {
     val TAG = GuardNotificationListenerService::class.java.simpleName
@@ -40,6 +49,6 @@ class GuardNotificationListenerService : NotificationListenerService() {
     val sdf = SimpleDateFormat("yyyy MM/dd hh:mm:ss")
     val currentDate = sdf.format(Date())
 
-    // TODO: save message to repo
+    WeChatService(this, repository).addNotification(title = title, text = text, date = currentDate,)
   }
 }
