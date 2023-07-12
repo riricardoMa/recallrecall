@@ -1,32 +1,45 @@
 package com.recallrecall.service
 
-import android.app.Service
-import android.content.Intent
-import android.os.IBinder
+import android.app.Notification
+import android.service.notification.NotificationListenerService
+import android.service.notification.StatusBarNotification
+import android.text.SpannableString
+import android.util.Log
+import java.text.SimpleDateFormat
+import java.util.Date
 
-class GuardNotificationListenerService : Service() {
-  /**
-   * Return the communication channel to the service.  May return null if
-   * clients can not bind to the service.  The returned
-   * [android.os.IBinder] is usually for a complex interface
-   * that has been [described using
- * aidl]({@docRoot}guide/components/aidl.html).
-   *
-   *
-   * *Note that unlike other application components, calls on to the
-   * IBinder interface returned here may not happen on the main thread
-   * of the process*.  More information about the main thread can be found in
-   * [Processes and
- * Threads]({@docRoot}guide/topics/fundamentals/processes-and-threads.html).
-   *
-   * @param intent The Intent that was used to bind to this service,
-   * as given to [ Context.bindService][android.content.Context.bindService].  Note that any extras that were included with
-   * the Intent at that point will *not* be seen here.
-   *
-   * @return Return an IBinder through which clients can call on to the
-   * service.
-   */
-  override fun onBind(intent: Intent?): IBinder? {
-    TODO("Not yet implemented")
+class GuardNotificationListenerService : NotificationListenerService() {
+
+  private val wechatPkg = "com.tencent.mm"
+
+  companion object {
+    val TAG = GuardNotificationListenerService::class.java.simpleName
+  }
+
+  override fun onNotificationPosted(sbn: StatusBarNotification) {
+    showMsg(sbn)
+  }
+
+  private fun showMsg(sbn: StatusBarNotification) {
+    val packageName = sbn.packageName
+    if (packageName != wechatPkg) return
+    sbn.notification.extras?.let {extras ->
+      val title = extras.getString(Notification.EXTRA_TITLE)
+      val msgText: Any? = extras.getCharSequence(Notification.EXTRA_TEXT)
+      if (msgText is SpannableString) {
+        Log.d(TAG, "is SpannableString ...." + msgText.subSequence(0, msgText.length))
+      } else {
+        saveMsg(packageName, title, msgText.toString())
+      }
+    }
+  }
+
+  private fun saveMsg(pkgName: String, title: String?, text: String?) {
+    if (pkgName != wechatPkg) return
+
+    val sdf = SimpleDateFormat("yyyy MM/dd hh:mm:ss")
+    val currentDate = sdf.format(Date())
+
+    // TODO: save message to repo
   }
 }
