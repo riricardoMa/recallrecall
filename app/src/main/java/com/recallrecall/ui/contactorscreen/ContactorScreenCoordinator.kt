@@ -5,11 +5,11 @@ import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
 
 /**
- * Screen's coordinator which is responsible for handling actions from the UI layer
- * and one-shot actions based on the new UI state
+ * Screen's coordinator which is responsible for handling actions from the UI layer and one-shot
+ * actions based on the new UI state
  */
 class ContactorScreenCoordinator(
-  val viewModel: ContactorScreenViewModel,
+    val viewModel: ContactorScreenViewModel,
 ) {
   val screenStateFlow = viewModel.stateFlow
 
@@ -20,11 +20,7 @@ class ContactorScreenCoordinator(
 
 @Composable
 fun rememberContactorScreenCoordinator(
-  viewModel: ContactorScreenViewModel = hiltViewModel(),
+    viewModel: ContactorScreenViewModel = hiltViewModel(),
 ): ContactorScreenCoordinator {
-  return remember(viewModel) {
-    ContactorScreenCoordinator(
-      viewModel = viewModel
-    )
-  }
+  return remember(viewModel) { ContactorScreenCoordinator(viewModel = viewModel) }
 }

@@ -6,11 +6,11 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ContactorScreenScreen(
-  state: ContactorScreenState = ContactorScreenState(),
-  actions: ContactorScreenActions = ContactorScreenActions(),
+    state: ContactorScreenState = ContactorScreenState(),
+    actions: ContactorScreenActions = ContactorScreenActions(),
 ) {
   Text(
-    text = "Hello world!",
+      text = "Hello world!",
   )
 }
 
@@ -19,4 +19,3 @@ fun ContactorScreenScreen(
 private fun ContactorScreenScreenPreview() {
   ContactorScreenScreen()
 }
-

@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun ContactorScreenRoute(
-  coordinator: ContactorScreenCoordinator = rememberContactorScreenCoordinator(),
+    coordinator: ContactorScreenCoordinator = rememberContactorScreenCoordinator(),
 ) {
   // State observing and declarations
   val uiState by coordinator.screenStateFlow.collectAsState(ContactorScreenState())
@@ -19,12 +19,9 @@ fun ContactorScreenRoute(
   ContactorScreenScreen(uiState, actions)
 }
 
-
 @Composable
-fun rememberContactorScreenActions(coordinator: ContactorScreenCoordinator): ContactorScreenActions {
-  return remember(coordinator) {
-    ContactorScreenActions(
-      onClick = coordinator::doStuff
-    )
-  }
+fun rememberContactorScreenActions(
+    coordinator: ContactorScreenCoordinator
+): ContactorScreenActions {
+  return remember(coordinator) { ContactorScreenActions(onClick = coordinator::doStuff) }
 }

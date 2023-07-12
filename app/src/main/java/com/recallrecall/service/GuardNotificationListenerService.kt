@@ -5,8 +5,6 @@ import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.text.SpannableString
 import android.util.Log
-import com.recallrecall.db.Message
-import com.recallrecall.repository.MessageRepository
 import com.recallrecall.repository.RoomMessageRepository
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -18,8 +16,7 @@ class GuardNotificationListenerService : NotificationListenerService() {
 
   private val wechatPkg = "com.tencent.mm"
 
-  @Inject
-  lateinit var repository: RoomMessageRepository
+  @Inject lateinit var repository: RoomMessageRepository
 
   companion object {
     val TAG = GuardNotificationListenerService::class.java.simpleName
@@ -32,7 +29,7 @@ class GuardNotificationListenerService : NotificationListenerService() {
   private fun showMsg(sbn: StatusBarNotification) {
     val packageName = sbn.packageName
     if (packageName != wechatPkg) return
-    sbn.notification.extras?.let {extras ->
+    sbn.notification.extras?.let { extras ->
       val title = extras.getString(Notification.EXTRA_TITLE)
       val msgText: Any? = extras.getCharSequence(Notification.EXTRA_TEXT)
       if (msgText is SpannableString) {
@@ -49,6 +46,11 @@ class GuardNotificationListenerService : NotificationListenerService() {
     val sdf = SimpleDateFormat("yyyy MM/dd hh:mm:ss")
     val currentDate = sdf.format(Date())
 
-    WeChatService(this, repository).addNotification(title = title, text = text, date = currentDate,)
+    WeChatService(this, repository)
+        .addNotification(
+            title = title,
+            text = text,
+            date = currentDate,
+        )
   }
 }
