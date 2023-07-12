@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
 
+
+
     <application
             android:name=".RecallRecallApplication"
             android:allowBackup="true"
@@ -13,6 +15,17 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.RecallRecall"
             tools:targetApi="31">
+
+        <service
+                android:name=".service.GuardNotificationListenerService"
+                android:enabled="true"
+                android:label="@string/app_name"
+                android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
