@@ -1,7 +1,8 @@
-package com.recallrecall.app.db
+package com.recallrecall.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.recallrecall.db.Message
 
 
 @Dao
@@ -26,7 +27,7 @@ interface MessageDao {
     fun loadAllName(): LiveData<List<String>?>
 
     @Query(value = "SELECT * FROM db_message WHERE name = :name and id = (SELECT max(id) FROM db_message WHERE name = :name)")
-    fun loadLatestByName(name: String?):Message
+    fun loadLatestByName(name: String?): Message
 
     @Insert
     fun insertAll(vararg messages: Message?)
@@ -36,5 +37,4 @@ interface MessageDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(vararg message: Message)
-
 }
