@@ -9,7 +9,7 @@ data class Message(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @ColumnInfo var name: String,
     @ColumnInfo var content: String,
-    @ColumnInfo var date: String?,
+    @ColumnInfo var date: String,
     @ColumnInfo var recalled: Boolean = false
 ) {
   override fun toString(): String {
