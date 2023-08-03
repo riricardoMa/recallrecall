@@ -1,11 +1,11 @@
-package com.recallrecall.service
+package com.recallrecall.feature_recall.service
 
 import android.app.Notification
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.text.SpannableString
 import android.util.Log
-import com.recallrecall.repository.RoomMessageRepository
+import com.recallrecall.feature_recall.data.repository.MessageRepositoryImpl
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -16,7 +16,7 @@ class GuardNotificationListenerService : NotificationListenerService() {
 
   private val wechatPkg = "com.tencent.mm"
 
-  @Inject lateinit var repository: RoomMessageRepository
+  @Inject lateinit var repository: MessageRepositoryImpl
 
   companion object {
     val TAG = GuardNotificationListenerService::class.java.simpleName

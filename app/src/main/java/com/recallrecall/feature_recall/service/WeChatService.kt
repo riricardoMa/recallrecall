@@ -1,4 +1,4 @@
-package com.recallrecall.service
+package com.recallrecall.feature_recall.service
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -11,9 +11,8 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.recallrecall.db.Message
-import com.recallrecall.repository.MessageRepository
-import java.lang.StringBuilder
+import com.recallrecall.feature_recall.domain.model.Message
+import com.recallrecall.feature_recall.domain.repository.MessageRepository
 import java.util.*
 
 class WeChatService(private val context: Context, private val repository: MessageRepository) {

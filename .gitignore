@@ -14,3 +14,11 @@
 .cxx
 local.properties
 .idea/misc.xml
+.idea/ktfmt.xml
+.idea/gradle.xml
+.idea/migrations.xml
+.idea/misc.xml
+.idea/compiler.xml
+.idea/deploymentTargetDropDown.xml
+.idea/gradle.xml
+.idea/compiler.xml

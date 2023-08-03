@@ -1,4 +1,4 @@
-package com.recallrecall.db
+package com.recallrecall.feature_recall.domain.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
