@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ConversationItem(
+fun MessageItem(
     modifier: Modifier = Modifier,
     title: String,
     content: String,
@@ -59,7 +59,7 @@ fun ConversationItem(
 @Composable
 private fun PreviewConversationRow() {
   MaterialTheme {
-    ConversationItem(
+    MessageItem(
         title = "title",
         content = "something",
         date = "3/21",
