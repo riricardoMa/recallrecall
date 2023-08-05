@@ -13,6 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.NotificationManagerCompat
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.recallrecall.feature_recall.presentation.messages.MessageScreen
+import com.recallrecall.feature_recall.presentation.util.Screen
 import com.recallrecall.feature_recall.service.GuardNotificationListenerService
 import com.recallrecall.ui.theme.RecallRecallTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +39,16 @@ class MainActivity : ComponentActivity() {
     setContent {
       RecallRecallTheme {
         // A surface container using the 'background' color from the theme
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {}
+        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+          val navController = rememberNavController()
+          NavHost(navController = navController, startDestination = Screen.MessageScreen.route) {
+            composable(route = Screen.MessageScreen.route) {
+              MessageScreen(navController = navController)
+            }
+          }
+
+
+        }
       }
     }
   }
