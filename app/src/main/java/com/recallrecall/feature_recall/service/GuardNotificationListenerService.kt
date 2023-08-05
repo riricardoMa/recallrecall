@@ -45,7 +45,6 @@ class GuardNotificationListenerService : NotificationListenerService() {
   }
 
   override fun onNotificationPosted(sbn: StatusBarNotification) {
-    println("wechat $sbn")
     serviceScope.launch { processMassage(sbn) }
     super.onNotificationPosted(sbn)
   }
@@ -71,7 +70,7 @@ class GuardNotificationListenerService : NotificationListenerService() {
     }
   }
 
-  suspend fun saveMsg(pkgName: String, title: String, text: String) {
+  private suspend fun saveMsg(pkgName: String, title: String, text: String) {
     if (pkgName != wechatPkg) return
 
     val sdf = SimpleDateFormat("yyyy MM/dd hh:mm:ss", Locale.US)
