@@ -25,3 +25,5 @@ local.properties
 app/src/main/.idea/misc.xml
 app/src/main/.idea/modules.xml
 app/src/main/.idea/vcs.xml
+.idea/compiler.xml
+.idea/misc.xml
