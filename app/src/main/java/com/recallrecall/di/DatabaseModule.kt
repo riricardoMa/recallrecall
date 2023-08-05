@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.recallrecall.feature_recall.data.data_source.AppDatabase
 import com.recallrecall.feature_recall.data.data_source.MessageDao
+import com.recallrecall.feature_recall.data.repository.MessageRepositoryImpl
 import com.recallrecall.feature_recall.domain.repository.MessageRepository
 import com.recallrecall.feature_recall.domain.use_case.AddNotification
 import com.recallrecall.feature_recall.domain.use_case.GetConversation
@@ -39,15 +40,20 @@ object DatabaseModule {
     return database.messageDao
   }
 
-    @Provides
-    @Singleton
-    fun provideWeChatUseCases(repository: MessageRepository): WeChatUseCases {
-        return WeChatUseCases(
-            addNotification = AddNotification(repository),
-            updateToRecalled = UpdateToRecalled(),
-            getMessages = GetMessages(),
-            getConversation = GetConversation()
-        )
-    }
+  @Provides
+  @Singleton
+  fun provideMessageRepository(messageDao: MessageDao): MessageRepository {
+    return MessageRepositoryImpl(messageDao)
+  }
 
+  @Provides
+  @Singleton
+  fun provideWeChatUseCases(repository: MessageRepository): WeChatUseCases {
+    return WeChatUseCases(
+        addNotification = AddNotification(repository),
+        updateToRecalled = UpdateToRecalled(repository),
+        getMessages = GetMessages(repository),
+        getConversation = GetConversation(repository),
+      )
+  }
 }
