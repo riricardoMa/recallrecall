@@ -10,6 +10,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
@@ -26,6 +27,7 @@ fun ConversationItem(
     color: Color,
     onClick: () -> Unit,
 ) {
+  val horizontalPadding = 12.dp
   Card(
       onClick = onClick,
       modifier = modifier,
@@ -36,14 +38,15 @@ fun ConversationItem(
           ),
   ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
         horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
       ) {
-          Text(text = title, style = MaterialTheme.typography.headlineLarge, maxLines = 1)
-          Text(text = date, style = MaterialTheme.typography.headlineSmall, maxLines = 1)
+          Text(text = title, style = MaterialTheme.typography.headlineMedium, maxLines = 1)
+          Text(text = date, style = MaterialTheme.typography.bodyLarge, maxLines = 1)
         }
     Text(
-        modifier = Modifier.padding(horizontal = 12.dp),
+        modifier = Modifier.padding(horizontal = horizontalPadding),
         text = content,
         style = MaterialTheme.typography.bodyMedium,
         maxLines = 2,
