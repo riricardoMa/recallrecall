@@ -25,7 +25,7 @@ interface MessageDao {
   fun loadByDateAndName(startDate: String?, endDate: String?, name: String?): List<Message>?
 
   @Query(value = "SELECT * FROM db_message WHERE name LIKE :name ORDER BY id DESC")
-  fun loadByName(name: String?): LiveData<List<Message>?>
+  fun loadByName(name: String?): PagingSource<Int, Message>
 
   @Query(value = "SELECT * FROM db_message WHERE name LIKE :name AND recalled LIKE :recalled")
   fun loadByNameAndRecalled(name: String?, recalled: Boolean): List<Message>?

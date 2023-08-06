@@ -20,8 +20,13 @@ class MessageRepositoryImpl(private val messageDao: MessageDao) : MessageReposit
       name: String?,
   ): List<Message>? = messageDao.loadByDateAndName(startDate, endDate, name)
 
-  override suspend fun loadByName(name: String?): LiveData<List<Message>?> =
-      messageDao.loadByName(name)
+  override fun loadByName(name: String?): Flow<PagingData<Message>> {
+    return Pager(
+      config = PagingConfig(pageSize = 20),
+      pagingSourceFactory = {messageDao.loadByName(name)},
+    ).flow
+  }
+
 
   override suspend fun loadByNameAndRecalled(name: String?, recalled: Boolean): List<Message>? =
       messageDao.loadByNameAndRecalled(name, recalled)

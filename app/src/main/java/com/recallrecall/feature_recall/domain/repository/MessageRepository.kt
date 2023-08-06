@@ -12,7 +12,7 @@ interface MessageRepository {
 
   suspend fun loadByDateAndName(startDate: String?, endDate: String?, name: String?): List<Message>?
 
-  suspend fun loadByName(name: String?): LiveData<List<Message>?>
+  fun loadByName(name: String?): Flow<PagingData<Message>>
 
   suspend fun loadByNameAndRecalled(name: String?, recalled: Boolean): List<Message>?
 
