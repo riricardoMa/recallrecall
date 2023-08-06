@@ -1,7 +1,9 @@
 package com.recallrecall.feature_recall.domain.repository
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.recallrecall.feature_recall.domain.model.Message
+import kotlinx.coroutines.flow.Flow
 
 interface MessageRepository {
   fun getAll(): LiveData<List<Message>?>
@@ -14,9 +16,9 @@ interface MessageRepository {
 
   suspend fun loadByNameAndRecalled(name: String?, recalled: Boolean): List<Message>?
 
-  suspend fun loadAllName(): LiveData<List<String>?>
+  fun loadAllName(): Flow<PagingData<String>>
 
-  suspend fun loadLatestByName(name: String?): Message
+  fun loadLatestByName(name: String?): Flow<Message>
 
   suspend fun insertAll(vararg messages: Message?)
 

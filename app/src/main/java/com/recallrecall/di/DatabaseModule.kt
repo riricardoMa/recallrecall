@@ -54,6 +54,6 @@ object DatabaseModule {
         updateToRecalled = UpdateToRecalled(repository),
         getMessages = GetMessages(repository),
         getConversation = GetConversation(repository),
-      )
+    )
   }
 }

@@ -16,15 +16,15 @@ import androidx.core.app.NotificationManagerCompat
 import com.recallrecall.feature_recall.domain.repository.MessageRepository
 import com.recallrecall.feature_recall.domain.use_case.WeChatUseCases
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.Random
 import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GuardNotificationListenerService : NotificationListenerService() {

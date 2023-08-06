@@ -46,8 +46,6 @@ class MainActivity : ComponentActivity() {
               MessageScreen(navController = navController)
             }
           }
-
-
         }
       }
     }

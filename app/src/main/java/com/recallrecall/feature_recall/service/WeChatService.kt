@@ -1,21 +1,21 @@
 package com.recallrecall.feature_recall.service
 //
-//import android.Manifest
-//import android.annotation.SuppressLint
-//import android.app.NotificationChannel
-//import android.app.NotificationManager
-//import android.content.Context
-//import android.content.pm.PackageManager
-//import android.os.Build
-//import android.util.Log
-//import androidx.core.app.ActivityCompat
-//import androidx.core.app.NotificationCompat
-//import androidx.core.app.NotificationManagerCompat
-//import com.recallrecall.feature_recall.domain.model.Message
-//import com.recallrecall.feature_recall.domain.repository.MessageRepository
-//import java.util.*
+// import android.Manifest
+// import android.annotation.SuppressLint
+// import android.app.NotificationChannel
+// import android.app.NotificationManager
+// import android.content.Context
+// import android.content.pm.PackageManager
+// import android.os.Build
+// import android.util.Log
+// import androidx.core.app.ActivityCompat
+// import androidx.core.app.NotificationCompat
+// import androidx.core.app.NotificationManagerCompat
+// import com.recallrecall.feature_recall.domain.model.Message
+// import com.recallrecall.feature_recall.domain.repository.MessageRepository
+// import java.util.*
 //
-//class WeChatService(private val context: Context, private val repository: MessageRepository) {
+// class WeChatService(private val context: Context, private val repository: MessageRepository) {
 //
 //  private val TAG = "Wechat"
 //  private val CHANNEL_ID = "WeChatService"
@@ -114,4 +114,4 @@ package com.recallrecall.feature_recall.service
 //    }
 //    notificationManager.notify(Random().nextInt(10000), builder.build())
 //  }
-//}
+// }

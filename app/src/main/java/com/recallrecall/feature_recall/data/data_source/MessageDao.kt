@@ -1,6 +1,7 @@
 package com.recallrecall.feature_recall.data.data_source
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -8,6 +9,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.recallrecall.feature_recall.domain.model.Message
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MessageDao {
@@ -28,12 +30,13 @@ interface MessageDao {
   @Query(value = "SELECT * FROM db_message WHERE name LIKE :name AND recalled LIKE :recalled")
   fun loadByNameAndRecalled(name: String?, recalled: Boolean): List<Message>?
 
-  @Query(value = "SELECT DISTINCT name FROM db_message") fun loadAllName(): LiveData<List<String>?>
+  @Query(value = "SELECT DISTINCT name FROM db_message")
+  fun loadAllName(): PagingSource<Int, String>
 
   @Query(
       value =
           "SELECT * FROM db_message WHERE name = :name and id = (SELECT max(id) FROM db_message WHERE name = :name)")
-  fun loadLatestByName(name: String?): Message
+  fun loadLatestByName(name: String?): Flow<Message>
 
   @Insert fun insertAll(vararg messages: Message?)
 

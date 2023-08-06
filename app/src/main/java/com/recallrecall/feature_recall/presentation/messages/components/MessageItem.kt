@@ -41,17 +41,17 @@ fun MessageItem(
         modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
-      ) {
-          Text(text = title, style = MaterialTheme.typography.headlineMedium, maxLines = 1)
-          Text(text = date, style = MaterialTheme.typography.bodyLarge, maxLines = 1)
-        }
+    ) {
+      Text(text = title, style = MaterialTheme.typography.headlineMedium, maxLines = 1)
+      Text(text = date, style = MaterialTheme.typography.bodyLarge, maxLines = 1)
+    }
     Text(
         modifier = Modifier.padding(horizontal = horizontalPadding),
         text = content,
         style = MaterialTheme.typography.bodyMedium,
         maxLines = 2,
         overflow = TextOverflow.Ellipsis,
-      )
+    )
   }
 }
 
